@@ -1,0 +1,14 @@
+7755 - Mongo sem autenticação
+7756 - Mongo com autenticação
+
+docker run --name mongoDB-DockerMongoTindev-7755 -v /docker/mongoDB-DockerMongoTindev-7755/datadir:/data/db -p 7755:17017 -d mongo
+
+docker run --name mongoDB-DockerMongoTindev-7756 -v /docker/mongoDB-DockerMongoTindev-7756/datadir:/data/db -p 7756:17017 -d mongo --auth
+
+# Na versão com auth é necessario criar uma conta administrativa 
+# por isso execute os comando abaixo
+
+docker exec -it mongoDB-DockerMongoTindev-7756 mongo admin
+
+# Dentro do Shell do container cole a seguinte linha
+db.createUser({user: 'admin', pwd: 'myadminpassword', roles: [{ role: "root", db:"admin"}]});
