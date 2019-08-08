@@ -1,10 +1,15 @@
 const express = require("express");
-const mogoose = require("mongoose");
+const mongoose = require("mongoose");
 const routes = require("./routes");
 
 const server = express();
 
-mongoose.connect("mongodb://0.0.0.0:8081/timdev");
+mongoose.connect(
+  "mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb",
+  {
+    useNewUrlParser: true
+  }
+);
 
 server.use(express.json());
 
