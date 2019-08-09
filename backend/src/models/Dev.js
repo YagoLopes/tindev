@@ -1,4 +1,4 @@
-const { Schema, Model } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const DevSchema = new Schema(
   {
@@ -14,7 +14,19 @@ const DevSchema = new Schema(
     avatar: {
       type: String,
       required: true
-    }
+    },
+    likes: [
+      {
+        type: Schema.Types.ObjectId /*refernciando ao usuario com id no mongo*/,
+        ref: "Dev"
+      }
+    ],
+    dislikes: [
+      {
+        type: Schema.Types.ObjectId /*refernciando ao usuario com id no mongo*/,
+        ref: "Dev"
+      }
+    ]
   },
   {
     timestamps: true
