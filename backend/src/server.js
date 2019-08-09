@@ -7,14 +7,22 @@ const server = express();
 mongoose
   .connect("mongodb://mongodb/tindev", { useNewUrlParser: true })
   .then(() => {
+    console.log("#############################################");
     console.log("Connected to MongoDB");
+    console.log("#############################################");
   })
   .catch(err => {
+    console.log("#############################################");
     console.log(err);
+    console.log("#############################################");
     process.exit(1); //quit the process
   });
 
 server.use(express.json());
 
 server.use(routes);
-server.listen(4000);
+server.listen(4000, () => {
+  console.log("#############################################");
+  console.log("NodeJS and Express Strated.");
+  console.log("#############################################");
+});
