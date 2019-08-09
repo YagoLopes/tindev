@@ -5,7 +5,7 @@ const routes = require("./routes");
 const server = express();
 
 mongoose
-  .connect("mongodb://mongodb")
+  .connect("mongodb://mongodb/tindev", { useNewUrlParser: true })
   .then(() => {
     console.log("Connected to MongoDB");
   })
