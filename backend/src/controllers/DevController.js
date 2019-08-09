@@ -1,12 +1,11 @@
-/*const axios = require("axios");*/
+const axios = require("axios");
 
 module.exports = {
   async store(req, res) {
     const { username } = req.body;
-    /* const response = await axios.get(
+    const response = await axios.get(
       `https://api.github.com/users/${username}`
     );
-    return res.json(response.data);*/
-    return res.json(username);
+    return res.json(response.data);
   }
 };
