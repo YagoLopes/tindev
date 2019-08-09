@@ -4,15 +4,17 @@ const routes = require("./routes");
 
 const server = express();
 
-mongoose.connect(
-  "mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb",
-  {
-    useNewUrlParser: true
-  }
-);
+mongoose
+  .connect("mongodb://mongodb")
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch(err => {
+    console.log(err);
+    process.exit(1); //quit the process
+  });
 
 server.use(express.json());
 
 server.use(routes);
-
-server.listen(3333);
+server.listen(4000);
