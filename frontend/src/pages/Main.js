@@ -5,7 +5,7 @@ import api from "../services/api";
 import logo from "../assets/logo.svg";
 import like from "../assets/like.svg";
 import dislike from "../assets/dislike.svg";
-
+import { Link } from "react-router-dom";
 import "./Main.css";
 
 export default function Main({ match }) {
@@ -28,6 +28,7 @@ export default function Main({ match }) {
       /*O Segundo paramatro de uma requisição post é o body somente o terceiro simboliza o header*/
       headers: { user: match.params.id }
     });
+    setUsers(users.filter(user => user.id !== id));
   }
 
   async function handleDislike(id) {
@@ -35,30 +36,37 @@ export default function Main({ match }) {
       /*O Segundo paramatro de uma requisição post é o body somente o terceiro simboliza o header*/
       headers: { user: match.params.id }
     });
+    setUsers(users.filter(user => user.id !== id));
   }
 
   return (
     <div className="main-container">
-      <img src={logo} alt="Tindev" />
-      <ul>
-        {users.map(user => (
-          <li key={user._id}>
-            <img src={user.avatar} alt={user.name} />
-            <footer>
-              <strong>{user.name}</strong>
-              <p>{user.bio}</p>
-            </footer>
-            <div className="buttons">
-              <button type="button" onClick={() => handleLike(user._id)}>
-                <img src={like} alt="like" />
-              </button>
-              <button type="button" onClick={() => handleDislike(user._id)}>
-                <img src={dislike} alt="dislike" />
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <Link to="/">
+        <img src={logo} alt="Tindev" />
+      </Link>
+      {users.length > 0 ? (
+        users.map(user => (
+          <ul key={user._id}>
+            <li>
+              <img src={user.avatar} alt={user.name} />
+              <footer>
+                <strong>{user.name}</strong>
+                <p>{user.bio}</p>
+              </footer>
+              <div className="buttons">
+                <button type="button" onClick={() => handleLike(user._id)}>
+                  <img src={like} alt="like" />
+                </button>
+                <button type="button" onClick={() => handleDislike(user._id)}>
+                  <img src={dislike} alt="dislike" />
+                </button>
+              </div>
+            </li>
+          </ul>
+        ))
+      ) : (
+        <div className="empty"> Acabou :(</div>
+      )}
     </div>
   );
 }
