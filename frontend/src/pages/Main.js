@@ -28,7 +28,7 @@ export default function Main({ match }) {
       /*O Segundo paramatro de uma requisição post é o body somente o terceiro simboliza o header*/
       headers: { user: match.params.id }
     });
-    setUsers(users.filter(user => user.id !== id));
+    setUsers(users.filter(user => user._id !== id));
   }
 
   async function handleDislike(id) {
@@ -36,7 +36,7 @@ export default function Main({ match }) {
       /*O Segundo paramatro de uma requisição post é o body somente o terceiro simboliza o header*/
       headers: { user: match.params.id }
     });
-    setUsers(users.filter(user => user.id !== id));
+    setUsers(users.filter(user => user._id !== id));
   }
 
   return (
@@ -45,9 +45,9 @@ export default function Main({ match }) {
         <img src={logo} alt="Tindev" />
       </Link>
       {users.length > 0 ? (
-        users.map(user => (
-          <ul key={user._id}>
-            <li>
+        <ul>
+          {users.map(user => (
+            <li key={user._id}>
               <img src={user.avatar} alt={user.name} />
               <footer>
                 <strong>{user.name}</strong>
@@ -62,8 +62,8 @@ export default function Main({ match }) {
                 </button>
               </div>
             </li>
-          </ul>
-        ))
+          ))}
+        </ul>
       ) : (
         <div className="empty"> Acabou :(</div>
       )}
