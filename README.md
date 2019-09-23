@@ -1,8 +1,8 @@
 # Tindev
 
-- Login/Register ![Preview-Screens](https://github.com/YagoLopes/tindev/blob/master/doc/assets/img/tindev.png)
+- Login/Register ![Preview-Screens](https://github.com/YagoLopes/tindev/blob/master/doc/assets/img/tindev1.png)
 
-- Feed ![Preview-Screens](https://github.com/YagoLopes/tindev/blob/master/doc/assets/img/tindev.png)
+- Feed ![Preview-Screens](https://github.com/YagoLopes/tindev/blob/master/doc/assets/img/tindev2.png)
 
 If you want to take a look on all screens of the App, they are [here](https://w5bcg.csb.app/).
 
